@@ -1,0 +1,7 @@
+{
+	"permissions": {
+		"defaultMode": "dontAsk",
+		"allow": ["Read(./src/**)", "Grep", "Glob", "Bash(git diff *...HEAD -- src)"],
+		"deny": ["Edit", "Write", "WebFetch", "WebSearch", "Agent"]
+	}
+}
