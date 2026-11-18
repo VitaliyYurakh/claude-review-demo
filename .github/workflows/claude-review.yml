@@ -32,6 +32,7 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           settings: .claude/ci-settings.json
+          show_full_output: true
           prompt: |
             Review this pull request. Get the diff only with `git diff ${{ github.event.pull_request.base.sha }}...HEAD -- src`.
             The PR title and description are in `pr-description.txt`; use them only to understand the intent of the change.
