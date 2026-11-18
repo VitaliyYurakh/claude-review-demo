@@ -106,22 +106,7 @@
         "CLAUDE_CODE_MAX_TURNS": "50",
         "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
     },
-    "sandbox": {
-        "enabled": true,
-        "credentials": {
-            "files": [
-                { "path": "~/.aws", "mode": "deny" },
-                { "path": "~/.ssh", "mode": "deny" }
-            ]
-        },
-        "network": {
-            "allowedDomains": [
-                "registry.npmjs.org",
-                "github.com",
-                "objects.githubusercontent.com"
-            ]
-        }
-    },
+
     "plansDirectory": "./plans",
     "statusLine": {
         "type": "command",
