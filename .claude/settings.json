@@ -1,0 +1,130 @@
+{
+    "$schema": "https://json.schemastore.org/claude-code-settings.json",
+    "model": "opus",
+    "permissions": {
+        "defaultMode": "acceptEdits",
+        "allow": [
+            "Bash(npm run build)",
+            "Bash(npx tsc --noEmit)",
+            "mcp__electron-driver__start_app",
+            "mcp__electron-driver__stop_app",
+            "mcp__electron-driver__info",
+            "mcp__electron-driver__screenshot",
+            "mcp__electron-driver__console_logs",
+            "mcp__electron-driver__get_*",
+            "mcp__electron-driver__exists",
+            "mcp__electron-driver__elements_list",
+            "mcp__electron-driver__focused_element",
+            "mcp__electron-driver__accessibility_snapshot",
+            "mcp__electron-driver__windows_list",
+            "mcp__electron-driver__wait_for_selector",
+            "mcp__electron-driver__snapshot",
+            "mcp__electron-driver__click"
+        ],
+        "ask": [
+            "Bash(npm install *)",
+            "Bash(git checkout *)",
+            "Bash(git push *)",
+            "Bash(git pull *)",
+            "Bash(git merge *)",
+            "Bash(git restore *)",
+            "Edit(./electron-builder.yml)"
+        ],
+        "deny": [
+            "Read(./node_modules/**)",
+            "Read(./release/**)",
+            "Read(.env)",
+            "Read(.env.*)",
+            "Edit(.env)",
+            "Edit(.env.*)",
+            "Bash(npm publish *)",
+            "Bash(electron-builder --publish *)",
+            "Bash(npx electron-builder --publish *)",
+            "Bash(git push --force*)",
+            "Bash(git push -f*)",
+            "Bash(git push * --force*)",
+            "Bash(git push * -f*)",
+            "Bash(rm -rf *)",
+            "Bash(rm -fr *)",
+            "Bash(rm -r -f *)",
+            "Bash(rm -f -r *)",
+            "Bash(rm --recursive --force *)",
+            "mcp__electron-driver__eval_main",
+            "mcp__electron-driver__eval_renderer",
+            "mcp__electron-driver__drop_file"
+        ]
+    },
+    "hooks": {
+        "PreToolUse": [
+            {
+                "matcher": "Edit|Write",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/protect-files.mjs\""
+                    }
+                ]
+            }
+        ],
+        "PostToolUse": [
+            {
+                "matcher": "Edit|Write",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/biome-check.mjs\""
+                    }
+                ]
+            }
+        ],
+        "Stop": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/oracle-gate.mjs\"",
+                        "timeout": 180
+                    }
+                ]
+            }
+        ],
+        "Notification": [
+            {
+                "matcher": "permission_prompt|idle_prompt",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/notify.mjs\""
+                    }
+                ]
+            }
+        ]
+    },
+    "enabledMcpjsonServers": ["electron-driver"],
+    "env": {
+        "BASH_DEFAULT_TIMEOUT_MS": "300000",
+        "CLAUDE_CODE_MAX_TURNS": "50",
+        "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
+    },
+    "sandbox": {
+        "enabled": true,
+        "credentials": {
+            "files": [
+                { "path": "~/.aws", "mode": "deny" },
+                { "path": "~/.ssh", "mode": "deny" }
+            ]
+        },
+        "network": {
+            "allowedDomains": [
+                "registry.npmjs.org",
+                "github.com",
+                "objects.githubusercontent.com"
+            ]
+        }
+    },
+    "plansDirectory": "./plans",
+    "statusLine": {
+        "type": "command",
+        "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/statusline.mjs\""
+    }
+}

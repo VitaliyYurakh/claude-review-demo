@@ -1,0 +1,34 @@
+{
+    "$schema": "https://json.schemastore.org/claude-code-settings.json",
+    "permissions": {
+        "allow": [
+            "Bash(git commit *)",
+            "mcp__electron-driver__start_app",
+            "mcp__electron-driver__stop_app",
+            "mcp__electron-driver__info",
+            "mcp__electron-driver__screenshot",
+            "mcp__electron-driver__console_logs",
+            "mcp__electron-driver__get_*",
+            "mcp__electron-driver__exists",
+            "mcp__electron-driver__elements_list",
+            "mcp__electron-driver__focused_element",
+            "mcp__electron-driver__accessibility_snapshot",
+            "mcp__electron-driver__windows_list",
+            "mcp__electron-driver__wait_for_selector"
+        ],
+        "ask": [
+            "Bash(git push *)",
+            "Bash(git pull *)",
+            "Bash(git merge *)",
+            "Bash(git restore *)"
+        ],
+        "deny": [
+            "mcp__electron-driver__eval_main",
+            "mcp__electron-driver__eval_renderer",
+            "mcp__electron-driver__drop_file"
+        ]
+    },
+    "spinnerTipsEnabled": false,
+    "maxEffortLevel": "high",
+    "enabledMcpjsonServers": ["electron-driver"]
+}

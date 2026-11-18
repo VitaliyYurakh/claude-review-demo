@@ -1,0 +1,8 @@
+appId: com.vitaliy.bookshelf
+productName: Bookshelf
+directories:
+  output: release
+files:
+  - out/**
+win:
+  target: portable

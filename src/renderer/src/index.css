@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--font-sans: "Inter", system-ui, sans-serif;
+	--font-serif: "Playfair Display", Georgia, serif;
+
+	--color-bg: var(--bg);
+	--color-bg-soft: var(--bg-soft);
+	--color-panel: var(--panel);
+	--color-panel-2: var(--panel-2);
+	--color-line: var(--line);
+	--color-ink: var(--ink);
+	--color-ink-2: var(--ink-2);
+	--color-ink-3: var(--ink-3);
+	--color-accent: var(--accent);
+	--color-accent-2: var(--accent-2);
+	--color-accent-soft: var(--accent-soft);
+	--color-ok: var(--ok);
+	--color-warn: var(--warn);
+	--color-danger: var(--danger);
+	--color-info: var(--info);
+}
+
+:root {
+	--bg: #f6f3ee;
+	--bg-soft: #efeae2;
+	--panel: #ffffff;
+	--panel-2: #f9f6f1;
+	--line: #e4ddd2;
+	--ink: #1c1917;
+	--ink-2: #57534e;
+	--ink-3: #a8a29e;
+	--accent: #c2410c;
+	--accent-2: #ea580c;
+	--accent-soft: #fed7aa;
+	--ok: #15803d;
+	--warn: #b45309;
+	--danger: #b91c1c;
+	--info: #0369a1;
+}
+
+.dark {
+	--bg: #0f0f13;
+	--bg-soft: #15151b;
+	--panel: #1a1a22;
+	--panel-2: #20202a;
+	--line: #2a2a36;
+	--ink: #f4f4f5;
+	--ink-2: #a1a1aa;
+	--ink-3: #62626e;
+	--accent: #f59e0b;
+	--accent-2: #fbbf24;
+	--accent-soft: #3b2f14;
+	--ok: #4ade80;
+	--warn: #fbbf24;
+	--danger: #f87171;
+	--info: #38bdf8;
+}
+
+html,
+body,
+#root {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	@apply bg-bg text-ink font-sans antialiased;
+	overflow: hidden;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background: var(--line);
+	border-radius: 8px;
+	border: 2px solid transparent;
+	background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--ink-3);
+	background-clip: padding-box;
+	border: 2px solid transparent;
+}
+
+.drag-region {
+	-webkit-app-region: drag;
+}
+.no-drag {
+	-webkit-app-region: no-drag;
+}
+
+.prose-ai {
+	@apply text-sm leading-relaxed text-ink-2;
+}
+.prose-ai h1,
+.prose-ai h2,
+.prose-ai h3,
+.prose-ai h4 {
+	@apply text-ink font-semibold mt-4 mb-1;
+}
+.prose-ai p {
+	@apply my-2;
+}
+.prose-ai ul,
+.prose-ai ol {
+	@apply my-2 pl-5;
+}
+.prose-ai ul {
+	list-style: disc;
+}
+.prose-ai ol {
+	list-style: decimal;
+}
+.prose-ai strong {
+	@apply text-ink;
+}
+.prose-ai blockquote {
+	@apply border-l-2 border-accent pl-3 italic;
+}
+.prose-ai code {
+	@apply bg-panel-2 px-1 rounded text-xs;
+}
+
+.book-spine {
+	background: linear-gradient(135deg, var(--panel-2), var(--panel));
+}

@@ -1,0 +1,39 @@
+{
+	"name": "bookshelf",
+	"version": "1.1.0",
+	"description": "Personal reading tracker",
+	"main": "./out/main/index.js",
+	"author": "Vitaliy",
+	"private": true,
+	"scripts": {
+		"dev": "electron-vite dev",
+		"build": "electron-vite build",
+		"preview": "electron-vite preview",
+		"dist": "electron-vite build && electron-builder --win portable"
+	},
+	"dependencies": {
+		"@dnd-kit/core": "^6.3.1",
+		"@dnd-kit/sortable": "^10.0.0",
+		"@dnd-kit/utilities": "^3.2.2",
+		"framer-motion": "^13.1.1",
+		"lucide-react": "^1.37.0",
+		"react": "^19.2.8",
+		"react-dom": "^19.2.8",
+		"recharts": "^3.10.1",
+		"zustand": "^5.0.15"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.6.4",
+		"@tailwindcss/vite": "^4.3.3",
+		"@types/node": "^26.4.0",
+		"@types/react": "^19.2.18",
+		"@types/react-dom": "^19.2.5",
+		"@vitejs/plugin-react": "^5.2.0",
+		"electron": "^44.0.0",
+		"electron-builder": "^26.15.3",
+		"electron-vite": "^5.0.0",
+		"tailwindcss": "^4.3.3",
+		"typescript": "^7.0.2",
+		"vite": "^7.3.6"
+	}
+}
